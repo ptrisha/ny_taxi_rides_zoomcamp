@@ -15,6 +15,12 @@ sources:
          # freshness:
            # error_after: {count: 6, period: hour}
 
+    - name: staging_fhv
+      database: steady-cascade-376200
+      schema: fhv
+      tables:
+        - name: tripdata_2019_non_partitioned
+
 models:
     - name: stg_green_tripdata
       description: >
@@ -198,3 +204,30 @@ models:
             description: Total amount of all tolls paid in trip.
           - name: Total_amount 
             description: The total amount charged to passengers. Does not include cash tips.
+
+    - name: stg_fhv_tripdata
+      description: >
+        Trip made by for hire vehicles
+      columns:
+          - name: pickup_datetime
+            description: > 
+                pick up time
+          - name: dropoff_datetime
+            description: >
+                drop off timestamp
+          - name: pickup_locationid
+            description: >
+                integer code for pickup location
+          - name: dropoff_locationid
+            description: >
+                integer code for dropoff location
+          - name: dispatching_base_num
+            description: >
+                string identifier for dispatching base
+          - name: affiliated_base_num
+            description: >
+                string identifier for affiliated base
+          - name: sr_flag
+            description: >
+                string flag
+ 
